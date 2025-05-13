@@ -7,32 +7,31 @@ using XpCase.Application.DTOs.Transaction;
 using XpCase.Application.DTOs.Wallet;
 using XpCase.Domain.Entities;
 
-namespace XpCase.Application.Mappings
+namespace XpCase.Application.Mappings;
+
+public class MappingProfile : Profile
 {
-    public class MappingProfile : Profile
+    public MappingProfile()
     {
-        public MappingProfile()
-        {
-            CreateMap<Account, AccountDto>().ReverseMap();
+        CreateMap<Account, AccountDto>().ReverseMap();
 
-            CreateMap<Asset, AssetDto>().ReverseMap();
-            CreateMap<Asset, CreateAssetDto>().ReverseMap();
-            CreateMap<AssetDto, CreateAssetDto>().ReverseMap();
+        CreateMap<Asset, AssetDto>().ReverseMap();
+        CreateMap<Asset, CreateAssetDto>().ReverseMap();
+        CreateMap<AssetDto, CreateAssetDto>().ReverseMap();
 
-            CreateMap<Customer, CustomerDto>().ReverseMap();
-            CreateMap<Customer, CustomerDto>().ReverseMap();
+        CreateMap<Customer, CustomerDto>().ReverseMap();
+        CreateMap<Customer, CustomerDto>().ReverseMap();
 
-            CreateMap<Order, OrderDto>().ReverseMap();
-            CreateMap<Order, CreateOrderDto>().ReverseMap();
-            CreateMap<OrderDto, CreateOrderDto>().ReverseMap();
+        CreateMap<Order, OrderDto>().ReverseMap();
+        CreateMap<Order, CreateOrderDto>().ReverseMap();
+        CreateMap<OrderDto, CreateOrderDto>().ReverseMap();
 
-            CreateMap<Transaction, TransactionDto>().ReverseMap();
-            CreateMap<Transaction, CreateTransactionDto>().ReverseMap();
-            CreateMap<TransactionDto, CreateTransactionDto>().ReverseMap();
+        CreateMap<Transaction, TransactionDto>().ReverseMap();
+        CreateMap<Transaction, CreateTransactionDto>().ReverseMap();
+        CreateMap<TransactionDto, CreateTransactionDto>().ReverseMap();
 
-            CreateMap<Wallet, WalletDto>().ReverseMap();
-            CreateMap<Wallet, CreateWalletDto>().ReverseMap();
-            CreateMap<WalletDto, CreateWalletDto>().ReverseMap();
-        }
+        CreateMap<Wallet, WalletDto>().ReverseMap();
+        CreateMap<Wallet, CreateWalletDto>().ReverseMap();
+        CreateMap<WalletDto, CreateWalletDto>().ReverseMap();
     }
 }

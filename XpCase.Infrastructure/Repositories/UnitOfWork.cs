@@ -1,55 +1,52 @@
-﻿using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
+﻿using Microsoft.EntityFrameworkCore.Storage;
 using XpCase.Domain.Repositories;
 using XpCase.Infrastructure.Data;
 
-namespace XpCase.Infrastructure.Repositories
+namespace XpCase.Infrastructure.Repositories;
+
+public class UnitOfWork : IUnitOfWork
 {
-    public class UnitOfWork : IUnitOfWork
+    private readonly XpCaseDbContext _context;
+    private IDbContextTransaction _transaction;
+
+    public UnitOfWork(XpCaseDbContext context)
     {
-        private readonly XpCaseDbContext _context;
-        private IDbContextTransaction _transaction;
+        _context = context;
+    }
 
-        public UnitOfWork(XpCaseDbContext context)
-        {
-            _context = context;
-        }
+    public async Task BeginTransactionAsync()
+    {
+        _transaction = await _context.Database.BeginTransactionAsync();
+    }
 
-        public async Task BeginTransactionAsync()
+    public async Task CommitTransactionAsync()
+    {
+        if (_transaction != null)
         {
-            _transaction = await _context.Database.BeginTransactionAsync();
+            await _transaction.CommitAsync();
+            await _transaction.DisposeAsync();
+            _transaction = null;
         }
+    }
 
-        public async Task CommitTransactionAsync()
+    public async Task RollbackTransactionAsync()
+    {
+        if (_transaction != null)
         {
-            if (_transaction != null)
-            {
-                await _transaction.CommitAsync();
-                await _transaction.DisposeAsync();
-                _transaction = null;
-            }
+            await _transaction.RollbackAsync();
+            await _transaction.DisposeAsync();
+            _transaction = null;
         }
+    }
 
-        public async Task RollbackTransactionAsync()
-        {
-            if (_transaction != null)
-            {
-                await _transaction.RollbackAsync();
-                await _transaction.DisposeAsync();
-                _transaction = null;
-            }
-        }
+    public async Task<int> SaveChangesAsync()
+    {
+        return await _context.SaveChangesAsync();
+    }
 
-        public async Task<int> SaveChangesAsync()
-        {
-            return await _context.SaveChangesAsync();
-        }
-
-        public void Dispose()
-        {
-            _context.Dispose();
-            _transaction?.Dispose();
-        }
+    public void Dispose()
+    {
+        _context.Dispose();
+        _transaction?.Dispose();
     }
 }

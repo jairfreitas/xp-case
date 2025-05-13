@@ -1,25 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using XpCase.Domain.Entities;
 using XpCase.Domain.Repositories;
 using XpCase.Infrastructure.Data;
 
-namespace XpCase.Infrastructure.Repositories
+namespace XpCase.Infrastructure.Repositories;
+
+public class AccountRepository : IAccountRepository
 {
-    public class AccountRepository : IAccountRepository
+    private readonly XpCaseDbContext _context;
+
+    public AccountRepository(XpCaseDbContext context)
     {
-        private readonly XpCaseDbContext _context;
+        _context = context;
+    }
 
-        public AccountRepository(XpCaseDbContext context)
-        {
-            _context = context;
-        }
-
-        public async Task<IEnumerable<Account>> GetAllAsync()
-        {
-            return await _context.Accounts.ToListAsync();
-        }
+    public async Task<IEnumerable<Account>> GetAllAsync()
+    {
+        return await _context.Accounts.ToListAsync();
     }
 }

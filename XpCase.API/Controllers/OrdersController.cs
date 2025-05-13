@@ -155,7 +155,6 @@ public class OrdersController(IOrderService orderService) : ControllerBase
 
                     if (order.Status == "Partial" || order.Status == "Pending")
                         await orderService.MatchingEngineAsync(order);
-
                 }
                 catch (InvalidOperationException ex)
                 {

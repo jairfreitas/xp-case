@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using XpCase.Domain.Entities;
 using XpCase.Domain.Repositories;
 using XpCase.Infrastructure.Data;
@@ -51,10 +51,10 @@ public class OrderRepository(XpCaseDbContext context) : IOrderRepository
             query = query.AsNoTracking();
 
         return await query.OrderBy(o => o.CreatedAt).FirstOrDefaultAsync(predicate);
-
     }
 
-    public async Task<IEnumerable<Order>> FindAllAsync(Expression<Func<Order, bool>> predicate, bool asNoTracking = false)
+    public async Task<IEnumerable<Order>> FindAllAsync(Expression<Func<Order, bool>> predicate,
+        bool asNoTracking = false)
     {
         //return context.Orders.Where(predicate).OrderBy(o => o.CreatedAt).ToList();
 
@@ -64,7 +64,6 @@ public class OrderRepository(XpCaseDbContext context) : IOrderRepository
             query = query.AsNoTracking();
 
         return await query.Where(predicate).OrderBy(o => o.CreatedAt).ToListAsync();
-
     }
 
     public async Task<bool> AnyAsync(Func<Order?, bool> predicate)

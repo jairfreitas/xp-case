@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using XpCase.Application.DTOs.Customer;
-using XpCase.Application.DTOs.Order;
 using XpCase.Application.Interfaces;
 using XpCase.Domain.Entities;
 using XpCase.Domain.Repositories;

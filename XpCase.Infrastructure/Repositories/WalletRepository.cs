@@ -1,5 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using XpCase.Domain.Entities;
 using XpCase.Domain.Repositories;
 using XpCase.Infrastructure.Data;

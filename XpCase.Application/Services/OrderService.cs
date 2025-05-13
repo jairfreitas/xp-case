@@ -13,9 +13,9 @@ public class OrderService : IOrderService
     private readonly ICustomerRepository _customerRepository;
     private readonly IMapper _mapper;
     private readonly IOrderRepository _orderRepository;
+    private readonly ITransactionRepository _transactionRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IWalletRepository _walletRepository;
-    private readonly ITransactionRepository _transactionRepository;
 
     public OrderService(IOrderRepository orderRepository, IWalletRepository walletRepository,
         ICustomerRepository customerRepository, IAssetRepository assetRepository, IAssetService assetService,
@@ -54,7 +54,8 @@ public class OrderService : IOrderService
         var order = await GetByIdAsync(id);
 
         if (order.Status != "Reject")
-            throw new InvalidOperationException($"A Ordem não pode ser  excluída porque está com status de {order.Status}.");
+            throw new InvalidOperationException(
+                $"A Ordem não pode ser  excluída porque está com status de {order.Status}.");
 
         await _orderRepository.DeleteAsync(id);
     }
@@ -99,7 +100,8 @@ public class OrderService : IOrderService
 
     public async Task<OrderDto> GetPendingOrPartialOrderAsync(Guid id)
     {
-        var order = await _orderRepository.FindAsync(o => o.OrderId == id && (o.Status == "Pending" || o.Status == "Partial"), true);
+        var order = await _orderRepository.FindAsync(
+            o => o.OrderId == id && (o.Status == "Pending" || o.Status == "Partial"), true);
 
         if (order == null)
             throw new InvalidOperationException("Ordem não encontrada com status Pending ou Partial.");
@@ -119,16 +121,17 @@ public class OrderService : IOrderService
                 throw new InvalidOperationException("Esse Customer não tem recursos para executar essa Ordem.");
 
             //OBTENDO AS ORDENS OPOSTAS
-            var oppositeOrders = await _orderRepository.FindAllAsync(
-                      o => o.AssetId == newOrder.AssetId && o.CustomerId != newOrder.CustomerId &&
-                           (o.Status == "Pending" || o.Status == "Partial") &&
-                           o.IsBuyOrder != newOrder.IsBuyOrder);
+            var oppositeOrders = await _orderRepository.FindAllAsync(o =>
+                o.AssetId == newOrder.AssetId && o.CustomerId != newOrder.CustomerId &&
+                (o.Status == "Pending" || o.Status == "Partial") &&
+                o.IsBuyOrder != newOrder.IsBuyOrder);
 
 
             //SE FOR COMPRADOR VERIFICO ANTES SE HÁ ATIVOS DISPONÍVEIS DIRETAMENTE DA EMPRESA (IPO)
             if (newOrder.IsBuyOrder)
             {
-                var asset = await _assetService.GetByIdAndPriceQuantityAndValidDateAsync(newOrder.AssetId, newOrder.Price, newOrder.Quantity);
+                var asset = await _assetService.GetByIdAndPriceQuantityAndValidDateAsync(newOrder.AssetId,
+                    newOrder.Price, newOrder.Quantity);
 
                 //SE HOUVER ATIVO EFETIVO A COMPRA
                 if (asset != null)
@@ -151,7 +154,6 @@ public class OrderService : IOrderService
 
                 if (result)
                     break;
-
             }
 
             await _unitOfWork.CommitTransactionAsync();
@@ -175,19 +177,19 @@ public class OrderService : IOrderService
         switch (orderDto.IsBuyOrder)
         {
             case true:
-                {
-                    var hasAmountToOrder =
-                        await _customerRepository.HasAmountToOrder(orderDto.CustomerId, orderDto.Quantity, orderDto.Price);
+            {
+                var hasAmountToOrder =
+                    await _customerRepository.HasAmountToOrder(orderDto.CustomerId, orderDto.Quantity, orderDto.Price);
 
-                    return hasAmountToOrder;
-                }
+                return hasAmountToOrder;
+            }
             case false:
-                {
-                    var hasAssetsToOrder =
-                        await _walletRepository.HasAssetsToOrder(orderDto.CustomerId, orderDto.AssetId, orderDto.Quantity);
+            {
+                var hasAssetsToOrder =
+                    await _walletRepository.HasAssetsToOrder(orderDto.CustomerId, orderDto.AssetId, orderDto.Quantity);
 
-                    return hasAssetsToOrder;
-                }
+                return hasAssetsToOrder;
+            }
         }
     }
 
@@ -244,7 +246,7 @@ public class OrderService : IOrderService
         if (quantityPending >= 0)
             orderDto.Quantity = quantityPending;
 
-        if(orderDto.Quantity==0)
+        if (orderDto.Quantity == 0)
             orderDto.Status = "Approved";
 
         await _orderRepository.UpdateAsync(_mapper.Map<Order>(orderDto));
@@ -255,7 +257,7 @@ public class OrderService : IOrderService
     public async Task<bool> ExecuteOrderAsync(OrderDto newOrder, OrderDto oppositeOrder)
     {
         if ((newOrder.IsBuyOrder && oppositeOrder.Price <= newOrder.Price) ||
-                (!newOrder.IsBuyOrder && oppositeOrder.Price >= newOrder.Price))
+            (!newOrder.IsBuyOrder && oppositeOrder.Price >= newOrder.Price))
         {
             oppositeOrder.Status = "Partial";
             newOrder.Status = "Partial";
@@ -270,17 +272,11 @@ public class OrderService : IOrderService
 
             if (newOrder.IsBuyOrder)
             {
-                if (oppositeOrder.Price < newOrder.Price)
-                {
-                    newOrder.Price = oppositeOrder.Price;
-                }
+                if (oppositeOrder.Price < newOrder.Price) newOrder.Price = oppositeOrder.Price;
             }
             else
             {
-                if (oppositeOrder.Price > newOrder.Price)
-                {
-                    newOrder.Price = oppositeOrder.Price;
-                }
+                if (oppositeOrder.Price > newOrder.Price) newOrder.Price = oppositeOrder.Price;
             }
 
             if (oppositeOrder.Quantity == 0)
@@ -325,12 +321,12 @@ public class OrderService : IOrderService
 
     public async Task<IEnumerable<Guid>> GetAllIdPendingOrPartialOrderAsync()
     {
-       var orders = await _orderRepository.FindAllAsync(o => o.Status == "Pending" || o.Status == "Partial");
+        var orders = await _orderRepository.FindAllAsync(o => o.Status == "Pending" || o.Status == "Partial");
 
         if (!orders.Any())
             throw new InvalidOperationException("Não há Ordens encontradas com status Pending ou Partial.");
 
 
-        return orders.Select(s=> s.OrderId);
+        return orders.Select(s => s.OrderId);
     }
 }
