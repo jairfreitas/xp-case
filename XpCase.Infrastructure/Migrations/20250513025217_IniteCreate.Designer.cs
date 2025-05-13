@@ -12,7 +12,7 @@ using XpCase.Infrastructure.Data;
 namespace XpCase.Infrastructure.Migrations
 {
     [DbContext(typeof(XpCaseDbContext))]
-    [Migration("20240617215344_IniteCreate")]
+    [Migration("20250513025217_IniteCreate")]
     partial class IniteCreate
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace XpCase.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("ProductVersion", "9.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -60,22 +60,22 @@ namespace XpCase.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            AccountId = new Guid("f291ec66-8d25-4533-912a-020f055e9b75"),
-                            CreatedAt = new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8200),
+                            AccountId = new Guid("88b2a625-41b7-4a5f-a184-84dbad26cc7d"),
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "joao@operacao.com",
                             Name = "João da Silva"
                         },
                         new
                         {
-                            AccountId = new Guid("54a2a569-905a-4a72-b53c-c5e3344f8556"),
-                            CreatedAt = new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8216),
+                            AccountId = new Guid("8362097d-fa43-479e-83a5-f8a91f09f2ec"),
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "maria@operacao.com",
                             Name = "Maria da Silva"
                         },
                         new
                         {
-                            AccountId = new Guid("9f2c64ba-cdc5-4012-809d-e60478fc4fb6"),
-                            CreatedAt = new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8230),
+                            AccountId = new Guid("2ffae86a-d19c-419a-a02f-5fc992b89ddd"),
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "jose@operacao.com",
                             Name = "José da Silva"
                         });
@@ -134,9 +134,9 @@ namespace XpCase.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            AssetId = new Guid("ce9455e5-cc39-4547-8221-c5d2aec32ac5"),
-                            CreatedAt = new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8346),
-                            ExpirationDate = new DateTime(2029, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8337),
+                            AssetId = new Guid("f1584129-1b96-4e0e-a46c-9459260e0d2e"),
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpirationDate = new DateTime(2030, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Ação XYZ",
                             Price = 100m,
                             Quantity = 100,
@@ -145,9 +145,9 @@ namespace XpCase.Infrastructure.Migrations
                         },
                         new
                         {
-                            AssetId = new Guid("b5da053f-63af-4d83-bbf5-8f3532b37f70"),
-                            CreatedAt = new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8350),
-                            ExpirationDate = new DateTime(2027, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8349),
+                            AssetId = new Guid("b102b62f-aacb-4c10-a839-806699de8781"),
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpirationDate = new DateTime(2030, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Tesouro Selic 2025",
                             Price = 50m,
                             Quantity = 200,
@@ -156,9 +156,9 @@ namespace XpCase.Infrastructure.Migrations
                         },
                         new
                         {
-                            AssetId = new Guid("1c0efd94-3b9c-4926-b6ba-c9f301ed1782"),
-                            CreatedAt = new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8354),
-                            ExpirationDate = new DateTime(2027, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8354),
+                            AssetId = new Guid("f53328fe-b322-4182-8cc3-8d883c8e6a78"),
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpirationDate = new DateTime(2030, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Fundo Imobiliário ABC",
                             Price = 150.00m,
                             Quantity = 50,
@@ -203,25 +203,25 @@ namespace XpCase.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            CustomerId = new Guid("8bb1ab75-3060-492e-802d-368d577de3b0"),
+                            CustomerId = new Guid("118afd34-cb8b-4039-b76f-148759e47374"),
                             Amount = 5000.00m,
-                            CreatedAt = new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8383),
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "ricardo@customer.com",
                             Name = "Ricardo dos Santos"
                         },
                         new
                         {
-                            CustomerId = new Guid("030270cf-a15f-4091-a46d-ce13fb552f7c"),
+                            CustomerId = new Guid("13e5ce20-9ddc-4502-9527-9a9be0b94c45"),
                             Amount = 10000.00m,
-                            CreatedAt = new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8386),
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "ana@customer.com",
                             Name = "Ana dos Santos"
                         },
                         new
                         {
-                            CustomerId = new Guid("df033a27-90f5-4276-9f93-9389a8078c31"),
+                            CustomerId = new Guid("1934592b-0942-4876-9d57-8253c0c30fec"),
                             Amount = 300.00m,
-                            CreatedAt = new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8388),
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "felipe@customer.com",
                             Name = "Felipe dos Santos"
                         });

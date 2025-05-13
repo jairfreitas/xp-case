@@ -144,9 +144,9 @@ namespace XpCase.Infrastructure.Migrations
                 columns: new[] { "account_id", "created_at", "email", "name" },
                 values: new object[,]
                 {
-                    { new Guid("54a2a569-905a-4a72-b53c-c5e3344f8556"), new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8216), "maria@operacao.com", "Maria da Silva" },
-                    { new Guid("9f2c64ba-cdc5-4012-809d-e60478fc4fb6"), new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8230), "jose@operacao.com", "José da Silva" },
-                    { new Guid("f291ec66-8d25-4533-912a-020f055e9b75"), new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8200), "joao@operacao.com", "João da Silva" }
+                    { new Guid("2ffae86a-d19c-419a-a02f-5fc992b89ddd"), new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "jose@operacao.com", "José da Silva" },
+                    { new Guid("8362097d-fa43-479e-83a5-f8a91f09f2ec"), new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "maria@operacao.com", "Maria da Silva" },
+                    { new Guid("88b2a625-41b7-4a5f-a184-84dbad26cc7d"), new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "joao@operacao.com", "João da Silva" }
                 });
 
             migrationBuilder.InsertData(
@@ -154,9 +154,9 @@ namespace XpCase.Infrastructure.Migrations
                 columns: new[] { "asset_id", "created_at", "expiration_date", "name", "price", "quantity", "symbol", "types" },
                 values: new object[,]
                 {
-                    { new Guid("1c0efd94-3b9c-4926-b6ba-c9f301ed1782"), new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8354), new DateTime(2027, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8354), "Fundo Imobiliário ABC", 150.00m, 50, "FIABC", "Fundos de Investimentos" },
-                    { new Guid("b5da053f-63af-4d83-bbf5-8f3532b37f70"), new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8350), new DateTime(2027, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8349), "Tesouro Selic 2025", 50m, 200, "TS2025", "Tesouro Direto" },
-                    { new Guid("ce9455e5-cc39-4547-8221-c5d2aec32ac5"), new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8346), new DateTime(2029, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8337), "Ação XYZ", 100m, 100, "ACXYZ", "Ações" }
+                    { new Guid("b102b62f-aacb-4c10-a839-806699de8781"), new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2030, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tesouro Selic 2025", 50m, 200, "TS2025", "Tesouro Direto" },
+                    { new Guid("f1584129-1b96-4e0e-a46c-9459260e0d2e"), new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2030, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ação XYZ", 100m, 100, "ACXYZ", "Ações" },
+                    { new Guid("f53328fe-b322-4182-8cc3-8d883c8e6a78"), new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2030, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Fundo Imobiliário ABC", 150.00m, 50, "FIABC", "Fundos de Investimentos" }
                 });
 
             migrationBuilder.InsertData(
@@ -164,9 +164,9 @@ namespace XpCase.Infrastructure.Migrations
                 columns: new[] { "customer_id", "amount", "created_at", "email", "name" },
                 values: new object[,]
                 {
-                    { new Guid("030270cf-a15f-4091-a46d-ce13fb552f7c"), 10000.00m, new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8386), "ana@customer.com", "Ana dos Santos" },
-                    { new Guid("8bb1ab75-3060-492e-802d-368d577de3b0"), 5000.00m, new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8383), "ricardo@customer.com", "Ricardo dos Santos" },
-                    { new Guid("df033a27-90f5-4276-9f93-9389a8078c31"), 300.00m, new DateTime(2024, 6, 17, 18, 53, 43, 881, DateTimeKind.Local).AddTicks(8388), "felipe@customer.com", "Felipe dos Santos" }
+                    { new Guid("118afd34-cb8b-4039-b76f-148759e47374"), 5000.00m, new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ricardo@customer.com", "Ricardo dos Santos" },
+                    { new Guid("13e5ce20-9ddc-4502-9527-9a9be0b94c45"), 10000.00m, new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ana@customer.com", "Ana dos Santos" },
+                    { new Guid("1934592b-0942-4876-9d57-8253c0c30fec"), 300.00m, new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "felipe@customer.com", "Felipe dos Santos" }
                 });
 
             migrationBuilder.CreateIndex(
