@@ -37,9 +37,6 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 // Configure AutoMapper
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
-// Configure MediatR
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-
 // Configure MemoryCache
 builder.Services.AddMemoryCache();
 
